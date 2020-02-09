@@ -8,7 +8,7 @@
 		$scope.name="";
 		$scope.message="";
 		$scope.countItems = function(){
-			//$scope.message=items($scope.name);
+			
 			var count = items($scope.name);
 			if(count==0)
 			{
