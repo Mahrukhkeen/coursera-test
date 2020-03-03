@@ -22,17 +22,19 @@
 			templateUrl : 'template/view2.html',
 			controller : 'categoryController as view2',
 			resolve : {
-				data1 : ['MenuDataService', function(MenuDataService){
+				data1 : ['MenuDataService' ,'$timeout', '$q', function(MenuDataService,$timeout,$q){
 								
 					var arr1=[];
 					
 					var promise1 = MenuDataService.getAllCategories();
-					promise1.then(function(response){
+
+					
+						promise1.then(function(response){
 
 						arr1=[];
 						for(var i=0; i<response.data.length;i++)
 						{
-							arr1.push(response.data[i]);
+							arr1.push(response.data[i].name);
 							console.log(response.data[i].name);	
 						}
 			
@@ -42,6 +44,7 @@
 					});
 					console.log("returning");
 					return arr1;
+					
 				}]
 			}
 
