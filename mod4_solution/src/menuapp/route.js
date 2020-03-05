@@ -16,7 +16,7 @@
 			url : '/',
 			templateUrl : 'template/view1.html'
 		})
-		
+		////////////////////////////////////////////////////////////////////////////
 		.state('categories',{   
 			url : '/categories',
 			templateUrl : 'template/view2.html',
@@ -34,28 +34,36 @@
 						arr1=[];
 						for(var i=0; i<response.data.length;i++)
 						{
-							arr1.push(response.data[i].name);
-							console.log(response.data[i].name);	
+							arr1.push(response.data[i]);	
 						}
 			
 					})
 					.catch(function(errorMsg){
 						console.log("Error");
 					});
-					console.log("returning");
-					return arr1;
+
+					var deferred = $q.defer();
+
+    				// Wait 2 seconds before returning
+    				$timeout(function () {
+      				// deferred.reject(items);
+      					deferred.resolve(arr1);
+    				}, 2000);
+
+    				return deferred.promise;
 					
 				}]
 			}
 
 		})
-		
+		////////////////////////////////////////////////////////////////////////////
 		.state('categories.items',{
 			url : '/items/{param1}',
 			templateUrl : 'template/view3.html',
 			controller : 'itemController as view3',
 			resolve : {
-				data2 : ['$stateParams', 'MenuDataService', function($stateParams, MenuDataService){
+				data2 : ['$stateParams', 'MenuDataService', '$timeout', '$q', 
+				function($stateParams, MenuDataService, $timeout, $q){
 					
 					var arr2=[];
 					var selection = $stateParams.param1;
@@ -64,12 +72,13 @@
 					promise2.then(function(response){
 
 						arr2=[];
-						console.log(response);
+						
 						for(var i=0;i<response.data.menu_items.length;i++){
 
-							if ( response.data.menu_items[i].short_name.toLowerCase().indexOf(selection) !== -1 ){//correction required
+							if ( response.data.menu_items[i].short_name.includes(selection,0) ){
 							
 									arr2.push(response.data.menu_items[i]);
+									
 						
 							}
 						}
@@ -78,8 +87,17 @@
 					.catch(function(errorMsg){
 						console.log("Error");
 					});
-			
-					return arr2;
+					
+					var deferred = $q.defer();
+
+    				// Wait 2 seconds before returning
+    				$timeout(function () {
+      				// deferred.reject(items);
+      					deferred.resolve(arr2);
+    				}, 2000);
+
+    				return deferred.promise;
+
 				}]
 			}
 		});

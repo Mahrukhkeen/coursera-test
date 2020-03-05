@@ -8,6 +8,6 @@
 	{
 		var view3 = this;
 		view3.itemArr = data2;
-		/////////////////////Pass this value to item component////////////////////////
 	}
+	
 })();

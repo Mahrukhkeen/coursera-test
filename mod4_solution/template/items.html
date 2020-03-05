@@ -1,4 +1,11 @@
-<div>
-	{{itemDetail.name}}<br>
-	{{itemDetail.description}}
-</div>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+	</tr>
+	<tr ng-repeat="item in $ctrl.itemDetail">
+		<td>{{item.name}}</td>
+		<td>{{item.description}}</td>
+	</tr>
+</table>
+	

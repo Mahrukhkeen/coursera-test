@@ -1,8 +1,8 @@
-
-inside component 
--> {{$ctrl.itemCategory}} <-
-<!-- <ul >
-		<li ui-sref="categories.items({param1:item.short_name})">{{item}}</li>
-		<li ng-repeat="item in itemCategory">{{item.short_name}}</li>
-</ul> -->
-exit component
+<ul>
+	
+		<a ng-repeat="item in $ctrl.itemCategory" ui-sref="categories.items({param1:item.short_name})">
+			<li>{{item.name}}</li>
+		</a>
+	
+</ul>
+		
