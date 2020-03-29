@@ -1,0 +1,49 @@
+<div class="container">
+  <h1> Your Info !</h1><br>
+  <span ng-if='infoCtrl.empty || infoCtrl.information.in'>
+      <br> <h4>Not signed up yet.</h4> 
+      <a ui-sref="public.signup">Sign Up Now !</a>
+  </span>
+
+<span ng-hide='infoCtrl.empty || infoCtrl.information.in'>
+  
+  First Name : <span  style="margin-left: 30px;border-bottom:4px solid #557c3e; ">
+                  {{infoCtrl.information.first}}
+                </span><br><br>
+  Last Name : <span style="margin-left: 30px;border-bottom:4px solid #557c3e; ">
+                  {{infoCtrl.information.last}}
+              </span><br><br>
+  Email ID :  <span style="margin-left: 46px;border-bottom:4px solid #557c3e; ">
+                  {{infoCtrl.information.id}}
+              </span><br><br>
+  Phone No : <span style="margin-left: 32px;border-bottom:4px solid #557c3e; ">
+                  {{infoCtrl.information.ph}}
+              </span><br><br><br>
+
+
+  <div class="menu-item-tile col-md-6">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="menu-item-photo">
+          <div>{{infoCtrl.menuItem.short_name}}</div>
+          <img class="img-responsive" 
+	 		         width="250" 
+               height="150" 
+               ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.menuItem.short_name}}.jpg" 
+	 		         alt="{{infoCtrl.menuItem.name}}">
+        </div>
+        <!-- <div class="menu-item-price">{{infoCtrl.menuItem.price_small | currency}}
+          <span> {{infoCtrl.menuItem.small_portion_name}}</span> 
+          {{infoCtrl.menuItem.price_large | currency}} 
+          <span>{{infoCtrl.menuItem.large_portion_name}}</span>
+        </div> -->
+      </div>
+      <div class="menu-item-description col-sm-7">
+         <h3 class="menu-item-title">{{infoCtrl.menuItem.name}}</h3>
+        <p class="menu-item-details">{{infoCtrl.menuItem.description}}</p>
+      </div>
+    </div>
+    <hr class="visible-xs">
+  </div>
+</span>
+</div>

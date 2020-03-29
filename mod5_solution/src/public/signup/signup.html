@@ -1,0 +1,76 @@
+<div class="container">
+	<form name="signup" novalidate>
+		<br>
+		
+
+		First Name : <input style="margin-left: 109px;color:black;" 
+							type="text" 
+							ng-model='signupCtrl.fname' 
+							name="firstname" 
+							placeholder="First Name" 
+							required>
+		<span style="color:red" ng-if="signup.firstname.$error.required && signup.firstname.$touched">
+		*	First name is required
+		</span>
+		<br><br>
+		
+		
+		Last Name : <input style="margin-left: 109px;color:black;" 
+						   type="text" 
+						   ng-model='signupCtrl.lname' 
+						   name="lastname" 
+						   placeholder="Last Name" 
+						   required>
+		<span style="color:red" ng-if="signup.lastname.$error.required && signup.lastname.$touched">
+		*	Last name is required
+		</span>
+		<br><br>
+
+		
+		Email ID : <input style="margin-left: 124px;color:black;" 
+						  type="email"
+						  ng-model='signupCtrl.email' 
+						  name="emailID" 
+						  placeholder="something@something.com" 
+						  required> 
+		<span style="color:red" ng-if="signup.emailID.$invalid && signup.emailID.$touched">
+		*	Enter valid email ID
+		</span>
+		<br><br>
+		
+
+		Phone No. : <input style="margin-left: 109px;color:black;" 
+						   type="text" 
+						   ng-model='signupCtrl.phone'
+						   name="phone" 
+						   placeholder="XXXX-XXXXXXX" 
+						   pattern="(\d{4})-(\d{7})" 
+						   required>
+		<span style="color:red" ng-if="signup.phone.$invalid && signup.phone.$touched">
+		*	Enter valid phone number
+		</span>
+		<br><br>
+
+		
+		Enter your favourite : <input style="margin-left: 40px;color:black;"
+								   type="text" 
+								   name="shortname"
+								   ng-model="signupCtrl.short"
+								   placeholder="short name" 
+								   required>
+		
+		<span style="color:red;" ng-if="signupCtrl.invalid"> No such menu number exists </span>
+		<br><br>
+		
+		<button style="background-color: #557c3e;" 
+				ng-disabled="signup.$invalid" 
+				ng-click="signupCtrl.save()">
+			Sign Up
+		</button> 
+		<br><br>
+		
+	</form>
+	<div ng-if="signupCtrl.completed && !signupCtrl.invalid"> 
+		Your information has been saved
+	</div>
+</div>
